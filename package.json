@@ -1,0 +1,23 @@
+{
+  "name": "c12-employee-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bmilner88/c12-employee-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bmilner88/c12-employee-tracker/issues"
+  },
+  "homepage": "https://github.com/Bmilner88/c12-employee-tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "mysql2": "^2.3.3"
+  }
+}
