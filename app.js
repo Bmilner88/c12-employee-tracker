@@ -49,6 +49,8 @@ function init() {
         .then(confirm => {
             if(confirm.confirm_restart) {
                 options();
+            } else {
+                db.end();
             }
         });
     };
