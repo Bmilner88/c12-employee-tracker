@@ -109,6 +109,7 @@ function init() {
                     return;
                 }
                 console.log(`Added ${params} to the database`);
+                restart();
             });
         });
     };
@@ -155,6 +156,7 @@ function init() {
                     return;
                 }
                 console.log(`Added ${params[0]} to the database`);
+                restart();
             });
         });
     };
@@ -206,6 +208,7 @@ function init() {
                     return;
                 }
                 console.log(`Added ${params[0]} ${params[1]} to the database`);
+                restart();
             });
         });
     };
