@@ -8,10 +8,13 @@ function init() {
                 type: 'list',
                 name: 'action',
                 message: 'What would you like to do?',
-                choices: ['view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role']
+                choices: ['view all departments','view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role']
             },
         ]).then(input => {
             switch(input.action) {
+                case 'view all departments':
+                    viewDepartments();
+                    break;
                 case 'view all roles':
                     viewRoles();
                     break;
@@ -50,6 +53,19 @@ function init() {
         });
     };
 
+    function viewDepartments() {
+        const sql = `SELECT * FROM departments`;
+
+        db.query(sql, (err, rows) => {
+            if(err) {
+                console.log(err.message);
+                return;
+            }
+            console.table(rows);
+            restart();
+        });
+    };
+
     function viewRoles() {
         const sql = `SELECT * FROM roles`;
 
@@ -64,11 +80,36 @@ function init() {
     };
 
     function viewEmployees() {
+        const sql = `SELECT * FROM employees`;
 
+        db.query(sql, (err, rows) => {
+            if(err) {
+                console.log(err.message);
+                return;
+            }
+            console.table(rows);
+            restart();
+        });
     };
 
     function addDepartment() {
-
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'new_department',
+                message: 'What is the new department called?'
+            }
+        ]).then(input => {
+            const sql = `INSERT INTO departments (title) VALUES (?)`;
+            const params = input.new_department;
+            db.query(sql, params, (err, result) => {
+                if(err) {
+                    console.log(err);
+                    return;
+                }
+                viewDepartments();
+            });
+        });
     };
 
     function addRole() {
