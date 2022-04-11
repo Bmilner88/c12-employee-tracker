@@ -55,7 +55,6 @@ function init() {
 
     function viewDepartments() {
         const sql = `SELECT * FROM departments`;
-
         db.query(sql, (err, rows) => {
             if(err) {
                 console.log(err.message);
@@ -68,7 +67,6 @@ function init() {
 
     function viewRoles() {
         const sql = `SELECT * FROM roles`;
-
         db.query(sql, (err, rows) => {
             if(err) {
                 console.log(err.message);
@@ -81,7 +79,6 @@ function init() {
 
     function viewEmployees() {
         const sql = `SELECT * FROM employees`;
-
         db.query(sql, (err, rows) => {
             if(err) {
                 console.log(err.message);
@@ -113,11 +110,69 @@ function init() {
     };
 
     function addRole() {
-
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'title',
+                message: 'What is the new role called?'
+            },
+            {
+                type: 'input',
+                name: 'salary',
+                message: `What is the new role's salary?`,
+                validate: input => {
+                    if(isNaN(input)) {
+                        console.log('Please enter a number');
+                        return false;
+                    } else {
+                        return true;
+                    };
+                }
+            },
+            {
+                type: 'input',
+                name: 'department_id',
+                message: `What is the new role's department id?`,
+                validate: input => {
+                    if(!isNaN(input)) {
+                        return true;
+                    } else {
+                        console.log(' Please enter a number');
+                        return false;
+                    };
+                }
+            }
+        ]).then(input => {
+            const sql = `INSERT INTO roles(title, salary, department_id) VALUES (?,?,?)`;
+            const params = [input.title, input.salary, input.department_id];
+            db.query(sql, params, (err, result) => {
+                if(err) {
+                    console.log(err);
+                    return;
+                }
+                viewRoles();
+            });
+        });
     };
 
     function addEmployee() {
-
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'new_department',
+                message: 'What is the new department called?'
+            }
+        ]).then(input => {
+            const sql = `INSERT INTO departments (title) VALUES (?)`;
+            const params = input.new_department;
+            db.query(sql, params, (err, result) => {
+                if(err) {
+                    console.log(err);
+                    return;
+                }
+                viewDepartments();
+            });
+        });
     };
 
     function updateRole() {
