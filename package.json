@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Bmilner88/c12-employee-tracker#readme",
   "dependencies": {
+    "console.table": "^0.10.0",
     "inquirer": "^8.2.2",
     "mysql2": "^2.3.3"
   }
