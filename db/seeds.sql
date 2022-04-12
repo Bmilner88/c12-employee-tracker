@@ -1,14 +1,14 @@
-INSERT INTO departments(title)
+INSERT INTO departments(department)
 VALUES 
 ('Information Technology'),
 ('Accounting'),
 ('Human Resources');
 
-INSERT INTO roles(title, salary, department_id)
+INSERT INTO roles(title, department_id, salary)
 VALUES
-('IT Specialist', 27000, 1),
-('IT Professional', 36000, 1),
-('Back-End Developer', 80000, 1);
+('IT Specialist', 1, 27000),
+('IT Professional', 1, 36000),
+('Back-End Developer', 1, 80000);
 
 INSERT INTO employees(first_name, last_name, role_id, manager_id)
 VALUES
