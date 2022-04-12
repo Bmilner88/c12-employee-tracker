@@ -89,7 +89,7 @@ function init() {
                      FROM employees e
                      INNER JOIN roles ON e.role_id = roles.id
                      INNER JOIN departments ON roles.department_id = departments.id
-                     INNER JOIN employees m ON m.id = e.manager_id`;
+                     LEFT JOIN employees m ON m.id = e.manager_id`;
         db.query(sql, (err, rows) => {
             if(err) {
                 console.log(err.message);
