@@ -83,12 +83,13 @@ function init() {
     };
 
     function viewEmployees() {
-        const sql = `SELECT employees.id, employees.first_name, employees.last_name,
+        const sql = `SELECT e.id, e.first_name, e.last_name,
                      roles.title, departments.department, roles.salary,
-                     employees.manager_id AS manager
-                     FROM employees
-                     INNER JOIN roles ON employees.role_id = roles.id
-                     INNER JOIN departments ON roles.department_id = departments.id`;
+                     concat(m.first_name, ' ', m.last_name) manager
+                     FROM employees e
+                     INNER JOIN roles ON e.role_id = roles.id
+                     INNER JOIN departments ON roles.department_id = departments.id
+                     INNER JOIN employees m ON m.id = e.manager_id`;
         db.query(sql, (err, rows) => {
             if(err) {
                 console.log(err.message);
