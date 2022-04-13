@@ -37,4 +37,4 @@ You must have Node.js AND mysql installed to run the program!
 
 
 ## Links
-* [Walkthrough Video]()
+* [Walkthrough Video](https://drive.google.com/file/d/1n-SHqf9eg96DWF7qb-r8wNc0uzn6yjJR/view)
