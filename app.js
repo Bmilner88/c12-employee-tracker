@@ -255,7 +255,6 @@ function init() {
                 }
             ]).then(input => {
                 const split = input.update.split(' ');
-                
                 const sql = `UPDATE employees
                              SET role_id = ${input.new_role}
                              WHERE first_name = '${split[0]}'
