@@ -18,6 +18,6 @@ VALUES
 ('Jonah', 'Milner', 1, null),
 ('Ben', 'Milner', 2, 1),
 ('Lonny', 'Vandenberg', 3, null),
-('Jasmynne', 'Umbaugh', 4, null),
-('Ben', 'Wyatt', 6, 6),
-('Barney', 'Varmn', 5, null);
+('Jasmynne', 'Umbaugh', 4, 3),
+('Barney', 'Varmn', 5, null),
+('Ben', 'Wyatt', 6, 5);
