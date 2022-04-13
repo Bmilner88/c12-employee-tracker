@@ -263,7 +263,7 @@ function init() {
                     if(err) {
                         console.log(err);
                     }
-                    console.log(result);
+                    console.log(`Updated ${input.update}'s role`);
                     restart();
                 });
             });
