@@ -254,15 +254,18 @@ function init() {
                     }
                 }
             ]).then(input => {
-                const filter = result.filter(id => id.id === input)
+                const split = input.update.split(' ');
+                
                 const sql = `UPDATE employees
                              SET role_id = ${input.new_role}
-                             WHERE id = ${result.id}`
+                             WHERE first_name = '${split[0]}'
+                             AND last_name = '${split[1]}'`
                 db.query(sql, (err, result) => {
                     if(err) {
                         console.log(err);
                     }
                     console.log(result);
+                    restart();
                 });
             });
         });
